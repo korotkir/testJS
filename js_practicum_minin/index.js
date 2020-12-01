@@ -1,1 +1,3 @@
-const myModal = modal()
+console.log('index.js is worked')
+
+const modal = $.modal()
