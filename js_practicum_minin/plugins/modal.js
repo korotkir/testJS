@@ -1,8 +1,20 @@
 console.log('modal.js is worked')
 
 function _createModal(options) {
+    // В HTML-документах создает элемент c тем тегом, 
+    //что указан в аргументе или HTMLUnknownElement, 
+    //если имя тега не распознаётся.
     const modal = document.createElement('div')
+    // Добавляет класс 'vmodal' к созданому ранее div
     modal.classList.add('vmodal')
+    // insertAdjacentHTML() разбирает указанный текст 
+    // как HTML или XML и вставляет полученные узлы (nodes) 
+    // в DOM дерево в указанную позицию. Данная функция не 
+    // переписывает имеющиеся элементы, что предотвращает 
+    // дополнительную сериализацию и поэтому работает быстрее, 
+    // чем манипуляции с innerHTML.
+    // 'afterbegin': сразу после открывающего тега  
+    // element (modal) (перед первым потомком).
     modal.insertAdjacentHTML('afterbegin', `
       <div class="modal-overlay">
         <div class="modal-window">
