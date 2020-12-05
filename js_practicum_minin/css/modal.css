@@ -79,7 +79,7 @@
 
 .modal-footer {
   display: flex;
-  justify-content: left;
-  padding: 5px 10px;
+  justify-content: center;
+  padding: 15px 10px;
   border-top: 1px solid #eee;
 }

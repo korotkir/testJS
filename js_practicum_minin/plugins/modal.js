@@ -1,4 +1,6 @@
 console.log('modal.js is worked')
+let DEFAULT_WIDTH = '600px'
+
 
 function _createModal(options) {
     // В HTML-документах создает элемент c тем тегом, 
@@ -16,19 +18,18 @@ function _createModal(options) {
     // 'afterbegin': сразу после открывающего тега  
     // element (modal) (перед первым потомком).
     modal.insertAdjacentHTML('afterbegin', `
-      <div class="modal-overlay">
-        <div class="modal-window">
+      <div class="modal-overlay" data-close="true">
+        <div class="modal-window" style="width: ${options.width || DEFAULT_WIDTH}">
           <div class="modal-header">
-            <span class="modal-title">Modal title</span>
-            <span class="modal-close">&times;</span>
+            <span class="modal-title">${options.title || 'Window'}</span>
+            ${options.closable ? `<span class="modal-close" data-close="true">&times;</span>` : ''}
           </div>
           <div class="modal-body">
-            <div class="p">Lorem ipsum dolor sit.</div>
-            <div class="p">Lorem ipsum dolor sit.</div>
+            ${options.content || ''}
           </div>
           <div class="modal-footer">
-            <button>Ok</button>
-            <button>Cancel</button>
+            <button class="btn btn-primary">Ok</button>
+            <button class="cancelBut btn btn-primary">Cancel</button>
           </div>
         </div>
       </div>
@@ -38,11 +39,10 @@ function _createModal(options) {
 }
  
  $.modal = function(options) {
-   const ANIMATION_SPEED = 200
-   const $modal = _createModal(options)
-   let closing = false
-
-  return {
+  const ANIMATION_SPEED = 200
+  const $modal = _createModal(options)
+  let closing = false
+  let modal = {
     open() {
       !closing && $modal.classList.add('open')
     },
@@ -55,6 +55,17 @@ function _createModal(options) {
         closing = false
       }, ANIMATION_SPEED)
     },
-    destroy() {}
   }
+
+  $modal.addEventListener('click', event => {
+    console.log('Clicked', event.target.dataset.close)
+    if(event.target.dataset.close) {
+      modal.close()
+    }
+  })
+
+  return modal 
 }
+
+
+
