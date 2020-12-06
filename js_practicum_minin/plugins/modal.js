@@ -1,6 +1,31 @@
 console.log('modal.js is worked')
 let DEFAULT_WIDTH = '600px'
 
+Element.prototype.appendAfter = function(element) {
+  element.parentNode.insertBefore(this, element.nextSibling)
+}
+
+function noop() {}
+
+function _createModalFooter(buttons = []) {
+  if(buttons.length === 0) {
+    return document.createElement('div')
+  }
+
+  const wrap = document.createElement('div')
+  wrap.classList.add('modal-footer')
+
+  buttons.forEach(btn => {
+    const $btn = document.createElement('button')
+    $btn.textContent = btn.text
+    $btn.classList.add('btn')
+    $btn.classList.add(`btn-${btn.type || 'secondary'}`)
+    $btn.onclick = btn.handler || noop
+    wrap.appendChild($btn)
+  })
+
+  return wrap
+}
 
 function _createModal(options) {
     // В HTML-документах создает элемент c тем тегом, 
@@ -24,16 +49,14 @@ function _createModal(options) {
             <span class="modal-title">${options.title || 'Window'}</span>
             ${options.closable ? `<span class="modal-close" data-close="true">&times;</span>` : ''}
           </div>
-          <div class="modal-body">
+          <div class="modal-body" data-content>
             ${options.content || ''}
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary">Ok</button>
-            <button class="cancelBut btn btn-primary">Cancel</button>
           </div>
         </div>
       </div>
     `)
+    const footer = _createModalFooter(options.footerButtons)
+    footer.appendAfter(modal.querySelector('[data-content]'))    
     document.body.appendChild(modal)
     return modal
 }
@@ -42,8 +65,13 @@ function _createModal(options) {
   const ANIMATION_SPEED = 200
   const $modal = _createModal(options)
   let closing = false
+  let destroyed = false
+
   let modal = {
     open() {
+      if(destroyed) {
+        return console.log('Modal is destroyed')
+      }
       !closing && $modal.classList.add('open')
     },
     close() {
@@ -57,14 +85,24 @@ function _createModal(options) {
     },
   }
 
-  $modal.addEventListener('click', event => {
-    console.log('Clicked', event.target.dataset.close)
+  const listener = event => {
     if(event.target.dataset.close) {
       modal.close()
     }
-  })
+  } 
 
-  return modal 
+  $modal.addEventListener('click', listener)
+
+  return Object.assign(modal, {
+    destroy() {
+      $modal.parentNode.removeChild($modal)
+      $modal.removeEventListener('click', listener)
+      destroyed = true
+    },
+    setContent(html){
+      $modal.querySelector('[data-content]').innerHTML = html
+    }
+  }) 
 }
 
 
