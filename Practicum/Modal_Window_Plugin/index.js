@@ -4,7 +4,7 @@ const priceModal = $.modal({
   title: 'Цена товара',
   open: '.indexBtn',
   closable: true,
-  width: '400px',
+  width: '40%',
   footerButtons: [
     {text: 'Закрыть', type: 'primary', handler() {
       priceModal.close()
@@ -33,7 +33,7 @@ let guitars = [
 // guitars - аргумент функции
 // => - return
 let toHTML = guitars => `
-  <div class="col-4">
+  <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card">
           <img class="card-img-top" style="padding: 5px; height: 300px;" src="${guitars.img}" alt="${guitars.title}">
           <div class="card-body">
