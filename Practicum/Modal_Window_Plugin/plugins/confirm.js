@@ -2,7 +2,7 @@ $.confirm = function (options) {
     return new Promise((resolve, reject) => {
         const modal = $.modal({
             title: options.title,
-            width: '40%',
+            width: '40%w',
             closable: false,
             content: options.content,
             onClose() {
