@@ -26,3 +26,21 @@ function sortByLength (array) {
 }
 
 console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]))
+
+// 4
+
+function twoOldestAges(ages) {
+    ages.sort(function(a,b) {
+        return b - a
+    }).reverse()
+    return ages.slice(-2)
+}
+
+console.log(twoOldestAges([999,1,2,3,7,4,888])) // 1,2,3,6,8,
+
+
+
+
+
+
+
