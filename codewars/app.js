@@ -96,29 +96,21 @@ console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])) // => returns "(1
 
 
 function expandedForm(num) {
-    console.log(num)
-    let toString = String(num)
-    let array = []
+    let toString = String(num) 
+    let arr = []
     let result
     for (let i = 0; i < toString.length; i++) {
          if (toString[i] !== '0') {
              result = toString[i] + '0'.repeat(toString.length - (i + 1))
-             array[i] = result
+             arr[i] = result
          } else {
-             array[i] = '0'
+             arr[i] = '0'
          }
     }
-
-    for (i = 1; i < array.length; i++) {
-        if ( array[i] === '0' ) {
-            array.splice(i,1)
-        }
-    }
-
-    return String(array.join(' + '))
+    return String(arr.filter(func = (remove) => remove != 0).join(' + '))
 }
 
-console.log(expandedForm(506004))
+console.log(expandedForm(5006004))
 
 
 
