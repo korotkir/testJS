@@ -96,7 +96,7 @@ console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])) // => returns "(1
 
 
 function expandedForm(num) {
-    let toString = String(num) 
+    let toString = String(num)
     let arr = []
     let result
     for (let i = 0; i < toString.length; i++) {
