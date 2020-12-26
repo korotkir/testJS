@@ -133,31 +133,32 @@ console.groupEnd()
 // если два слова набирают одинаковое количество баллов, выигрывает слово которое написано раньше.
 
 function high(x){
-    let toString
-    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    let score = []
-
-    // Цикл баллов, в зависимости от расположения буквы в алфавите
-    for (i = 0; i < alphabet.length; i++) {
-        score[i] = i + 1
-    }
-    console.log(score) // [1,2,3 .. 25,26]
-
+    let alphabet = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     let stringToArray = x.split(' ')
-
     let symbol = {}
+    let result = []
 
     // Цикл разбивает слова на буквы, каждое слово отдельный индекс объекта
     for (i = 0; i < stringToArray.length; i++) {
         symbol[i]  = stringToArray[i].split('')
     }
-    console.table(symbol) // symbol = {0 = [t,h,e], 1 = [m,a,n]}
-    console.log(stringToArray.length)
 
-    let result = {}
-    // Присваивание балловs
+    for (i = 0; i < alphabet.length; i++) {
+        for (k = 0; k < Object.keys(symbol).length; k++ ) {
+            for (j = 0; j < symbol[k].length; j++) {
+                if (alphabet[i] === symbol[k][j]) {
+                    symbol[k][j] = alphabet.indexOf(alphabet[i])
+                }
+            }
+        }
+    }
 
+    for (i = 0; i < stringToArray.length; i++) {
+        result[i] = symbol[i].reduce((total, amount) => total + amount)
+    }
 
+    console.table(result)
+    return stringToArray[result.indexOf(Math.max.apply(Math, result))]
 }
 
 
@@ -166,7 +167,7 @@ function high(x){
 console.group(' 10 ')
 
 
-high('the man who sold the world')
+console.log(high('aa b'))
 
 
 console.groupEnd()
