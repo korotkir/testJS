@@ -1,12 +1,16 @@
 // 1
 
+
 function solution(str, ending){
     return str.indexOf(ending, str.length - ending.length) !== -1;
 }
 
+console.groupCollapsed(` 1 `)
 console.log(solution('abc', 'be'))
+console.groupEnd()
 
 // 2
+
 
 function reverseWords(str) {
     let fullReverse = str.split('').reverse().join('')
@@ -14,8 +18,9 @@ function reverseWords(str) {
     return result
 }
 
+console.groupCollapsed(` 2 `)
 console.log(reverseWords('Всем привет, меня зовут Кирилл!'))
-
+console.groupEnd()
 // 3
 
 function sortByLength (array) {
@@ -25,8 +30,9 @@ function sortByLength (array) {
     return array
 }
 
+console.groupCollapsed(` 3 `)
 console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]))
-
+console.groupEnd()
 // 4
 
 function twoOldestAges(ages) {
@@ -36,8 +42,9 @@ function twoOldestAges(ages) {
     return ages.slice(-2)
 }
 
+console.groupCollapsed(` 4 `)
 console.log(twoOldestAges([999,1,2,3,7,4,888])) // 1,2,3,6,8,
-
+console.groupEnd()
 
 // 5
 
@@ -51,8 +58,9 @@ function descendingOrder(n){
     return +result
 }
 
+console.groupCollapsed(` 5 `)
 console.log(descendingOrder(123456789))
-
+console.groupEnd()
 // 6
 
 function sumTwoSmallestNumbers(numbers) {
@@ -61,8 +69,9 @@ function sumTwoSmallestNumbers(numbers) {
     return result[0] + result[1]
 }
 
+console.groupCollapsed(` 6 `)
 console.log(sumTwoSmallestNumbers([19, 5, 42, 2, 77]))
-
+console.groupEnd()
 // 7
 
 function oddOrEven(array) {
@@ -77,8 +86,9 @@ function oddOrEven(array) {
     }
 }
 
+console.groupCollapsed(` 7 `)
 console.log(oddOrEven([1,2,3,4]))
-
+console.groupEnd()
 // 8
 
 function createPhoneNumber(numbers){
@@ -86,8 +96,9 @@ function createPhoneNumber(numbers){
     return `(${str[0]}${str[1]}${str[2]}) ${str[3]}${str[4]}${str[5]}-${str[6]}${str[7]}${str[8]}${str[9]}`
 }
 
+console.groupCollapsed(` 8 `)
 console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])) // => returns "(123) 456-7890"
-
+console.groupEnd()
 // 9
 
 // Test.assertEquals(expandedForm(12), '10 + 2');
@@ -110,10 +121,55 @@ function expandedForm(num) {
     return String(arr.filter(func = (remove) => remove != 0).join(' + '))
 }
 
+console.groupCollapsed(` 9 `)
 console.log(expandedForm(5006004))
+console.groupEnd()
+
+// 10. Highest Scoring Word
+
+// На входе: предложение
+// На выходе: слово получившее максимальный балл
+// Баллы присуждаются от суммы букв, a = 1, b = 2, c = 3 ...
+// если два слова набирают одинаковое количество баллов, выигрывает слово которое написано раньше.
+
+function high(x){
+    let toString
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    let score = []
+
+    // Цикл баллов, в зависимости от расположения буквы в алфавите
+    for (i = 0; i < alphabet.length; i++) {
+        score[i] = i + 1
+    }
+    console.log(score) // [1,2,3 .. 25,26]
+
+    let stringToArray = x.split(' ')
+
+    let symbol = {}
+
+    // Цикл разбивает слова на буквы, каждое слово отдельный индекс объекта
+    for (i = 0; i < stringToArray.length; i++) {
+        symbol[i]  = stringToArray[i].split('')
+    }
+    console.table(symbol) // symbol = {0 = [t,h,e], 1 = [m,a,n]}
+    console.log(stringToArray.length)
+
+    let result = {}
+    // Присваивание балловs
+
+
+}
 
 
 
+
+console.group(' 10 ')
+
+
+high('the man who sold the world')
+
+
+console.groupEnd()
 
 
 
