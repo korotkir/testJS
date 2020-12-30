@@ -164,10 +164,10 @@ function high(x){
 
 
 
-console.group(' 10 ')
+console.groupCollapsed(' 10 ')
 
 
-console.log(high('aa b'))
+console.log(`Побеждает слово: ${high('aa b')}`)
 
 
 console.groupEnd()
