@@ -161,20 +161,45 @@ function high(x){
     return stringToArray[result.indexOf(Math.max.apply(Math, result))]
 }
 
-
-
-
 console.groupCollapsed(' 10 ')
-
-
 console.log(`Побеждает слово: ${high('aa b')}`)
-
-
 console.groupEnd()
 
 
+// 11.
+// "hello case".camelCase() => HelloCase
+// "camel case word".camelCase() => CamelCaseWord
+
+String.prototype.camelCase=function(){
+    let arr = this.split(' ')
+    let upWord = arr.map(n => `${(n[0] || '').toUpperCase()}${n.slice(1)}`)
+    return upWord.reduce(function (a,b){
+        return a + b
+    })
+}
+
+console.groupCollapsed(' 11 ')
+console.log('camel case word'.camelCase())
+console.groupEnd()
 
 
+// 12.
+// scramble('rkqodlw', 'world') ==> True
+// scramble('cedewaraaossoqqyt', 'codewars') ==> True
+// scramble('katas', 'steak') ==> False
+
+function scramble(str1, str2) {
+    for (i = 0; i < str1.length; i++) {
+        for (j = 0; j < str2.length; j++) {
+            if (str1[i] != str2[j]) {
+                console.log(`i = ${i}, j = ${j}`)
+            }
+        }
+    }
+}
+
+//console.log(scramble('cedewaraaossoqqyt', 'codewars')) // true
+console.log(scramble('katas', 'steak')) // false
 
 
 
