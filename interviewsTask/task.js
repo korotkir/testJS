@@ -1,23 +1,3 @@
-friends = {
-    'Cерега' : 'Омск',
-    'Соня' : 'Москва',
-    'Дима' : 'Челябинск'}
-
-function isAnyoneIn(collection, city) {
-    for (let key in collection) {
-        if (collection[key] == city) {
-            return `В городе ${collection[key]} проживает ${key}`
-        }
-    }
-    return 'Ничего не найдено!'
-}
-console.groupCollapsed('Объекты. Цикл for in')
-console.log(isAnyoneIn(friends, 'Москва'))
-console.groupEnd()
-
-// key: Серега, collection[key] = Омск
-
-// https://www.youtube.com/watch?v=VeWtYEX8NfU&feature=emb_logo
 /*
 Прислал Александр.
 
@@ -43,7 +23,9 @@ Lucas и Bill.
 */
 
 function killer(suspectInfo, dead) {
-
+    if (suspectInfo['James'].includes(dead[0])) {
+        return 'Yes'
+    }
 }
 
 console.log(killer({
