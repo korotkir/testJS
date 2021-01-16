@@ -1,3 +1,6 @@
+"use strict";
+
+
 /*
 Прислал Александр.
 
@@ -21,11 +24,12 @@
 Найдите имя убийцы. В нашем случае это James, так как он единственный, кто видел
 Lucas и Bill.
 */
-
 function killer(suspectInfo, dead) {
-    if (suspectInfo['James'].includes(dead[0])) {
-        return 'Yes'
-    }
+   for (let i = 0; i < Object.keys(suspectInfo).length; i++) {
+       for (let suspect[i] of suspectInfo[i]) {
+           return suspectInfo[suspect]
+       }
+   }
 }
 
 console.log(killer({
@@ -34,8 +38,18 @@ console.log(killer({
     'Peter': ['Lucy', 'Kyle']
 }, ['Lucas', 'Bill'])); // 'James'
 
-console.log(killer({
-    'Brad': [],
-    'Megan': ['Ben', 'Kevin'],
-    'Finn': []
-}, ['Ben'])); // 'Megan'
+// console.log(killer({
+//     'Brad': [],
+//     'Megan': ['Ben', 'Kevin'],
+//     'Finn': []
+// }, ['Ben'])); // 'Megan'
+
+
+
+
+
+
+
+
+
+
