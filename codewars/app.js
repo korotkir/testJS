@@ -183,23 +183,24 @@ console.log('camel case word'.camelCase())
 console.groupEnd()
 
 
-// 12.
-// scramble('rkqodlw', 'world') ==> True
-// scramble('cedewaraaossoqqyt', 'codewars') ==> True
-// scramble('katas', 'steak') ==> False
+// 12
 
-function scramble(str1, str2) {
-    for (i = 0; i < str1.length; i++) {
-        for (j = 0; j < str2.length; j++) {
-            if (str1[i] != str2[j]) {
-                console.log(`i = ${i}, j = ${j}`)
-            }
-        }
-    }
+/*
+Write a function that when given a URL as a string, parses
+out just the domain name and returns it as a string.
+For example:
+
+domainName("http://github.com/carbonfive/raygun") == "github"
+domainName("http://www.zombie-bites.com") == "zombie-bites"
+domainName("https://www.cnet.com") == "cnet"
+*/
+
+function domainName(url){
+    let re = new RegExp()
+    console.log(url.split())
 }
 
-//console.log(scramble('cedewaraaossoqqyt', 'codewars')) // true
-console.log(scramble('katas', 'steak')) // false
+domainName("http://github.com/carbonfive/raygun")
 
 
 
