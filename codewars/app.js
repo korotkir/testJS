@@ -196,11 +196,13 @@ domainName("https://www.cnet.com") == "cnet"
 */
 
 function domainName(url){
-    let re = new RegExp()
-    console.log(url.split())
+    let re = url.match(/\w+\./g)
+    let result = re[re.length - 1]
+    return result.slice(0, result.length - 1)
 }
 
-domainName("http://github.com/carbonfive/raygun")
+console.log(domainName("http://google.co.jp"))
+
 
 
 
