@@ -184,7 +184,6 @@ console.groupEnd()
 
 
 // 12
-
 /*
 Write a function that when given a URL as a string, parses
 out just the domain name and returns it as a string.
@@ -196,12 +195,48 @@ domainName("https://www.cnet.com") == "cnet"
 */
 
 function domainName(url){
-    let re = url.match(/\w+\./g)
-    let result = re[re.length - 1]
-    return result.slice(0, result.length - 1)
+    let re = url.match(/(\w|\-)+\./g) // массив с подходящими значениями
+    if (re[0] == 'www.') {re.splice(0,1)}
+    let result = re[0] // берем самый первый (левый элемент)
+    return result.slice(0, result.length - 1) // удаляем точку
 }
 
+console.groupCollapsed(' 12 ')
+console.log(
+    `Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.
+For example:
+domainName("http://github.com/carbonfive/raygun") == "github"
+domainName("http://www.zombie-bites.com") == "zombie-bites"
+domainName("https://www.cnet.com") == "cnet"`)
+console.log(domainName("http://google.com"))
 console.log(domainName("http://google.co.jp"))
+console.log(domainName("www.xakep.ru"))
+console.log(domainName("https://youtube.com"))
+console.log(domainName('https://www.n9-rj6vxavp.tv'))
+console.groupEnd()
+
+// 13
+
+/*
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+""  -->  ""
+ */
+
+
+/*
+Если слово включает цифру i - добавить этот элемент в конец нового массива,
+и повторять order.length раз
+ */
+
+function order(words){
+
+}
+
+console.log(order("is2 Thi1s T4est 3a"))
+console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
+console.log(order(""))
+
 
 
 
