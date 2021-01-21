@@ -215,27 +215,7 @@ console.log(domainName("https://youtube.com"))
 console.log(domainName('https://www.n9-rj6vxavp.tv'))
 console.groupEnd()
 
-// 13
 
-/*
-"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
-"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
-""  -->  ""
- */
-
-
-/*
-Если слово включает цифру i - добавить этот элемент в конец нового массива,
-и повторять order.length раз
- */
-
-function order(words){
-
-}
-
-console.log(order("is2 Thi1s T4est 3a"))
-console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
-console.log(order(""))
 
 
 
