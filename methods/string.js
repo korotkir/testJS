@@ -1,5 +1,6 @@
 let string = 'Демонстрация методов строк в JS.'
 
+console.groupCollapsed('string')
 // Метод: charAr
 // Действие: Возвращает символ по указанному индексу.
 // Перевод: char - символьный тип, at - в
@@ -130,4 +131,6 @@ console.log('hello'.toUpperCase())
 // Пример:
 
 console.log(' Hello world! '.trim())
+
+console.groupEnd()
 
