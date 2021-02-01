@@ -229,7 +229,13 @@ console.log(order("4of Fo1r pe6ople g3ood th5e the2")) // "Fo1r the2 g3ood 4of t
 console.log(order("")) // ""
 console.groupEnd()
 
+// 14
 
+function sumStrings(a,b) {
+    return (BigInt(a) + BigInt(b)).toString()
+}
+console.log(sumStrings('123','456')) // 579
+console.log(sumStrings('712569312664357328695151392', '8100824045303269669937'))
 
 
 
