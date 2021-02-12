@@ -61,6 +61,7 @@ function descendingOrder(n){
 console.groupCollapsed(` 5 `)
 console.log(descendingOrder(123456789))
 console.groupEnd()
+
 // 6
 
 function sumTwoSmallestNumbers(numbers) {
@@ -72,6 +73,7 @@ function sumTwoSmallestNumbers(numbers) {
 console.groupCollapsed(` 6 `)
 console.log(sumTwoSmallestNumbers([19, 5, 42, 2, 77]))
 console.groupEnd()
+
 // 7
 
 function oddOrEven(array) {
@@ -89,6 +91,7 @@ function oddOrEven(array) {
 console.groupCollapsed(` 7 `)
 console.log(oddOrEven([1,2,3,4]))
 console.groupEnd()
+
 // 8
 
 function createPhoneNumber(numbers){
@@ -99,6 +102,7 @@ function createPhoneNumber(numbers){
 console.groupCollapsed(` 8 `)
 console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])) // => returns "(123) 456-7890"
 console.groupEnd()
+
 // 9
 
 // Test.assertEquals(expandedForm(12), '10 + 2');
@@ -165,7 +169,6 @@ console.groupCollapsed(' 10 ')
 console.log(`Побеждает слово: ${high('aa b')}`)
 console.groupEnd()
 
-
 // 11.
 // "hello case".camelCase() => HelloCase
 // "camel case word".camelCase() => CamelCaseWord
@@ -181,7 +184,6 @@ String.prototype.camelCase=function(){
 console.groupCollapsed(' 11 ')
 console.log('camel case word'.camelCase())
 console.groupEnd()
-
 
 // 12
 /*
@@ -215,7 +217,6 @@ console.log(domainName("https://youtube.com"))
 console.log(domainName('https://www.n9-rj6vxavp.tv'))
 console.groupEnd()
 
-
 // 13
 
 function order(words){
@@ -228,17 +229,6 @@ console.log(order("is2 Thi1s T4est 3a")); // "Thi1s is2 3a T4est"
 console.log(order("4of Fo1r pe6ople g3ood th5e the2")) // "Fo1r the2 g3ood 4of th5e pe6ople"
 console.log(order("")) // ""
 console.groupEnd()
-
-// 14
-
-function sumStrings(a,b) {
-    return (BigInt(a) + BigInt(b)).toString()
-}
-console.log(sumStrings('123','456')) // 579
-console.log(sumStrings('712569312664357328695151392', '8100824045303269669937'))
-
-
-
 
 
 
