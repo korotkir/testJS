@@ -230,6 +230,30 @@ console.log(order("4of Fo1r pe6ople g3ood th5e the2")) // "Fo1r the2 g3ood 4of t
 console.log(order("")) // ""
 console.groupEnd()
 
+// 14
+
+function getMiddle(s)
+{
+  //Code goes here!
+  if (s.length === 1) {
+    return s
+  } else if (s.length % 2 === 0) {
+      let oneStep = s.length / 2
+      let twoStep = oneStep - 1
+      return s.slice(twoStep, -Math.abs(twoStep))
+    } else if (s.length % 2 !== 0) {
+      let oneStep = (s.length - 1) / 2
+      return s.slice(oneStep, -Math.abs(oneStep))
+  } 
+}
+
+console.groupCollapsed(' 14 ')
+console.log('You are going to be given a word. Your job is to return the middle character of the word. If the words length is odd, return the middle character. If the words length is even, return the middle 2 characters.')
+console.log('testing', getMiddle('testing')) // t
+console.log('test', getMiddle('test')) // es
+console.log('A', getMiddle('A'))
+console.groupEnd()
+
 
 
 
