@@ -244,7 +244,7 @@ function getMiddle(s)
     } else if (s.length % 2 !== 0) {
       let oneStep = (s.length - 1) / 2
       return s.slice(oneStep, -Math.abs(oneStep))
-  } 
+  }
 }
 
 console.groupCollapsed(' 14 ')
@@ -254,9 +254,9 @@ console.log('test', getMiddle('test')) // es
 console.log('A', getMiddle('A'))
 console.groupEnd()
 
-// 15
+// 15. Вариант 1.
 
-function likes(names) {
+function ifLikes(names) {
   if(names.length === 0) {
     return `no one likes this`
   } else if(names.length === 1) {
@@ -272,13 +272,43 @@ function likes(names) {
 }
 
 
-console.groupCollapsed(' 14 ')
-console.log(likes([])) // must be "no one likes this"
-console.log(likes(['Alex',])) // must be "Alex likes this"
-console.log(likes(['Alex', 'Jacob'])) // must be "Alex and Jacob like this"
-console.log(likes(['Alex', 'Jacob', 'Mark'])) // must be "Alex, Jacob and Mark like this"
-console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])) // must be "Alex, Jacob and 2 others like this"
+console.groupCollapsed(' 15. Через if')
+console.log(ifLikes([])) // must be "no one likes this"
+console.log(ifLikes(['Alex',])) // must be "Alex likes this"
+console.log(ifLikes(['Alex', 'Jacob'])) // must be "Alex and Jacob like this"
+console.log(ifLikes(['Alex', 'Jacob', 'Mark'])) // must be "Alex, Jacob and Mark like this"
+console.log(ifLikes(['Alex', 'Jacob', 'Mark', 'Max'])) // must be "Alex, Jacob and 2 others like this"
 console.groupEnd()
+
+// 15. Вариант 2.
+
+function switchLikes(names) {
+ switch(names.length) {
+  case 0:
+   return `no one likes this`
+   break
+  case 1:
+   return `${names[0]} likes this`
+   break
+  case 2:
+   return `${names[0]} and ${names[1]} like this`
+   break
+  case 3:
+   return `${names[0]}, ${names[1]} and ${names[2]} like this`
+   break
+  default:
+   return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+ }
+}
+
+console.groupCollapsed(' 15. Через Switch')
+console.log(switchLikes([])) // must be "no one likes this"
+console.log(switchLikes(['Alex',])) // must be "Alex likes this"
+console.log(switchLikes(['Alex', 'Jacob'])) // must be "Alex and Jacob like this"
+console.log(switchLikes(['Alex', 'Jacob', 'Mark'])) // must be "Alex, Jacob and Mark like this"
+console.log(switchLikes(['Alex', 'Jacob', 'Mark', 'Max'])) // must be "Alex, Jacob and 2 others like this"
+console.groupEnd()
+
 
 
 
