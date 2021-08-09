@@ -309,6 +309,22 @@ console.log(switchLikes(['Alex', 'Jacob', 'Mark'])) // must be "Alex, Jacob and 
 console.log(switchLikes(['Alex', 'Jacob', 'Mark', 'Max'])) // must be "Alex, Jacob and 2 others like this"
 console.groupEnd()
 
+// 16
+
+function pigIt(str){
+  //Code here
+  let strArr = str.split(' ')
+  let firstLetter = strArr.map(elem => elem.substring(0, 1))
+  let result = strArr.map(el => el.slice(1)).map((el, i, arr) => el + firstLetter[i] + 'ay').join(' ')
+  return result.slice(-3, -2).search(/[^a-zа-яё0-9\s]/gi) ? result : result.substring(0, result.length - 2)
+  
+  
+}
+
+console.groupCollapsed(' 16.')
+console.log(pigIt('Pig latin is cool')) // igPay atinlay siay oolcay
+console.log(pigIt('Hello world !'))     // elloHay orldway !
+console.groupEnd()
 
 
 
