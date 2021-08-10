@@ -317,8 +317,8 @@ function pigIt(str){
   let firstLetter = strArr.map(elem => elem.substring(0, 1))
   let result = strArr.map(el => el.slice(1)).map((el, i, arr) => el + firstLetter[i] + 'ay').join(' ')
   return result.slice(-3, -2).search(/[^a-zа-яё0-9\s]/gi) ? result : result.substring(0, result.length - 2)
-  
-  
+
+
 }
 
 console.groupCollapsed(' 16.')
@@ -326,7 +326,28 @@ console.log(pigIt('Pig latin is cool')) // igPay atinlay siay oolcay
 console.log(pigIt('Hello world !'))     // elloHay orldway !
 console.groupEnd()
 
+// 17. Human readable duration format
 
+function formatDuration (seconds) {
+ let durationArr = []
+ let fullMinutes = Math.floor(seconds / 60)
+ let fullSecond = seconds - Math.round(seconds/5) * 5
+ durationArr.push(fullMinutes)
+ durationArr.push(fullSecond)
+ console.log(durationArr)
+ let minutesResult = durationArr[0] ? `${durationArr[0]} minute` + (durationArr[1] ? ` and ${durationArr[1]} seconds` : 's') : `${durationArr[1]} second`
+ let hourResult = (Math.floor(durationArr[0] / 60)) + ` hour, ${durationArr[0] % 60} minutes and ${(seconds % 60) - Math.floor(seconds % 60)}`
+ return durationArr[0] < 60 ? minutesResult : hourResult
+ //return minutesResult
+}
+
+
+// console.groupCollapsed(' 17.')
+console.log('1',formatDuration(1)) // 1 second
+console.log('62',formatDuration(62)) // 1 minute and 2 seconds
+console.log('120',formatDuration(120)) // 2 minutes
+console.log('3600',formatDuration(7832)) // 2 hour and 1 minutes
+//console.groupEnd()
 
 
 
