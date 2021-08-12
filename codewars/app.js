@@ -328,26 +328,52 @@ console.groupEnd()
 
 // 17. Human readable duration format
 
+// 17. Human readable duration format
+
 function formatDuration (seconds) {
+ let valueMinutes = 60
+ let valueHours = 3600
+ let valueDay = 86400
+ let valueYear = 31536000
  let durationArr = []
- let fullMinutes = Math.floor(seconds / 60)
- let fullSecond = seconds - Math.round(seconds/5) * 5
- durationArr.push(fullMinutes)
- durationArr.push(fullSecond)
- console.log(durationArr)
- let minutesResult = durationArr[0] ? `${durationArr[0]} minute` + (durationArr[1] ? ` and ${durationArr[1]} seconds` : 's') : `${durationArr[1]} second`
- let hourResult = (Math.floor(durationArr[0] / 60)) + ` hour, ${durationArr[0] % 60} minutes and ${(seconds % 60) - Math.floor(seconds % 60)}`
- return durationArr[0] < 60 ? minutesResult : hourResult
- //return minutesResult
+ // Minutes
+ let MinMinutes = seconds <= valueDay ? Math.floor(seconds / 60) : seconds
+ let MinSecond = seconds - Math.round(seconds/5) * 5
+ durationArr.push(MinMinutes)
+ durationArr.push(MinSecond)
+ let sometime = (el) => el > 1 ? 's' : ''
+ let minutesResult = durationArr[0] ? `${durationArr[0]} minute` + sometime(durationArr[0]) + (durationArr[1] ? ` and ${durationArr[1]} second` + sometime(durationArr[1]) : '') : `${durationArr[1]} second` + sometime(durationArr[1])
+
+ // Hours
+ let hourHours = Math.floor(durationArr[0] / 60)
+ let hourMinutes = durationArr[0] % 60
+ let hourSeconds = seconds - (Math.floor(seconds / 60) * 60)
+ let hourResult = hourSeconds && hourMinutes ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourSeconds ? `${hourHours} ${'hour' + sometime(hourHours)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourMinutes ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)}` : `${hourHours} ${'hour' + sometime(hourHours)}`
+ // Day
+ let dayResult = 'Дни не реализованы'
+
+ // Year
+ let yearResult = 'Года не реализованы'
+
+ // result
+ return durationArr[0] <= valueMinutes ? minutesResult
+  : durationArr[0] <= valueHours ? hourResult
+   : durationArr[0] >= valueDay ? dayResult
+    : yearResult
 }
 
 
 // console.groupCollapsed(' 17.')
-console.log('1',formatDuration(1)) // 1 second
-console.log('62',formatDuration(62)) // 1 minute and 2 seconds
-console.log('120',formatDuration(120)) // 2 minutes
-console.log('3600',formatDuration(7832)) // 2 hour and 1 minutes
+console.log(formatDuration(1))
+console.log(formatDuration(61))
+console.log(formatDuration(121))
+console.log(formatDuration(3600))
+console.log(formatDuration(86452))
 //console.groupEnd()
+
+
+
+
 
 
 
