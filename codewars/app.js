@@ -328,7 +328,7 @@ console.groupEnd()
 
 // 17. Human readable duration format
 
-// 17. Human readable duration format
+// https://calculat.io/ru/date/converter/seconds--365--days
 
 function formatDuration (seconds) {
  let valueMinutes = 60
@@ -348,12 +348,24 @@ function formatDuration (seconds) {
  let hourHours = Math.floor(durationArr[0] / 60)
  let hourMinutes = durationArr[0] % 60
  let hourSeconds = seconds - (Math.floor(seconds / 60) * 60)
- let hourResult = hourSeconds && hourMinutes ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourSeconds ? `${hourHours} ${'hour' + sometime(hourHours)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourMinutes ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)}` : `${hourHours} ${'hour' + sometime(hourHours)}`
+ let hourResult = hourSeconds && hourMinutes
+                   ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourSeconds
+                   ? `${hourHours} ${'hour' + sometime(hourHours)} and ${hourSeconds} ${'second' + sometime(hourSeconds)}` : hourMinutes
+                   ? `${hourHours} ${'hour' + sometime(hourHours)}, ${hourMinutes} ${'minute' + sometime(hourMinutes)}` : `${hourHours} ${'hour' + sometime(hourHours)}`
  // Day
- let dayResult = 'Дни не реализованы'
+ let dayDays = Math.floor(durationArr[0] / valueDay)
+ let dayHours = Math.floor((durationArr[0] % valueDay) / 3600)
+ let dayMinutes = Math.floor((durationArr[0] % valueDay) % 3600 / 60)
+ let daySeconds = seconds - (Math.floor(seconds / 60) * 60)
+ let dayResult = dayMinutes && dayHours
+                   ? `${dayDays} ${'day' + sometime(dayDays)}, ${dayHours} ${'hour' + sometime(dayHours)}, ${dayMinutes} ${'minute' + sometime(dayMinutes)} and ${daySeconds} ${'second' + sometime(daySeconds)}` : daySeconds && dayMinutes
+                   ? `${dayDays} ${'day' + sometime(dayDays)}, ${dayMinutes} ${'minute' + sometime(dayMinutes)} and ${daySeconds} ${'second' + sometime(daySeconds)}` : daySeconds
+                   ? `${dayDays} ${'day' + sometime(dayDays)} and ${daySeconds} ${'second' + sometime(daySeconds)}` : dayHours
+                   ? `${dayDays} ${'day' + sometime(dayDays)}, ${dayHours} ${'hour' + sometime(dayHours)} and ${daySeconds} ${'second' + sometime(daySeconds)}` : hourMinutes
+                   ? `${dayDays} ${'hour' + sometime(dayHours)}, ${dayMinutes} ${'minute' + sometime(dayMinutes)}` : `${dayHours} ${'hour' + sometime(dayHours)}`
 
  // Year
- let yearResult = 'Года не реализованы'
+ let yearResult =  'no'
 
  // result
  return durationArr[0] <= valueMinutes ? minutesResult
@@ -368,9 +380,8 @@ console.log(formatDuration(1))
 console.log(formatDuration(61))
 console.log(formatDuration(121))
 console.log(formatDuration(3600))
-console.log(formatDuration(86452))
+console.log(formatDuration(87790))
 //console.groupEnd()
-
 
 
 
