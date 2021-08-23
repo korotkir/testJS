@@ -384,6 +384,38 @@ console.log(formatDuration(87790))
 //console.groupEnd()
 
 
+// 18. 
+function formatDuration (seconds) {
+if (seconds === 0) {return 'now'}
+ result = (value, year = 31536000) => {
+ 	let sometimes = (el) => el > 1 ? 's' : ''
+ 	let years = Math.floor(value / year) 
+  let days  = Math.floor((value % year) / 86400)
+  let hours = Math.floor((value % year) % 86400 / 3600) 
+  let minutes = Math.floor((value % year) % 86400 % 3600 / 60) 
+  let second = value - (Math.floor(value / 60) * 60)
+  let template = `${years != 0 ? years + ' year' + sometimes(years) + '-' : ''}${days != 0 ? days + ' day' + sometimes(days) + '-' : ''}${hours != 0 ? hours + ' hour' + sometimes(hours) + '-' : ''}${minutes != 0 ? minutes + ' minute' + sometimes(minutes) + '-' : ''}${second != 0 ? second + ' second' + sometimes(second) : ''}`.trim().replace(/ {1,}/g," ").split('-').filter((el) => el != '')
+  
+template.length === 5 ? template.splice(1, 0, ',') && template.splice(3, 0, ',') && template.splice(5, 0, ',') && template.splice(7, 0, 'and') : template.length === 4 ? template.splice(1, 0, ',') && template.splice(3, 0, ',') && template.splice(5, 0, 'and') : template.length === 3 ? template.splice(1, 0, ',') && template.splice(3, 0, 'and') : template.length === 2 ? template.splice(1, 0, 'and') : ''
+  
+  return template.join(' ').replace(/\s,/g, ',')
+  
+ }
+ 
+ return result(seconds)
+}
+
+
+// console.groupCollapsed(' 18.')
+console.log(formatDuration(1))
+console.log(formatDuration(61))
+console.log(formatDuration(121))
+console.log(formatDuration(3600))
+console.log(formatDuration(87780))
+console.log(formatDuration(10622))
+console.log(formatDuration(41535960))
+console.log(formatDuration(0))
+//console.groupEnd()
 
 
 
