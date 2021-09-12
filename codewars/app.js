@@ -384,29 +384,29 @@ console.log(formatDuration(87790))
 //console.groupEnd()
 
 
-// 18. 
+// 18.
 function formatDuration (seconds) {
 if (seconds === 0) {return 'now'}
  result = (value, year = 31536000) => {
  	let sometimes = (el) => el > 1 ? 's' : ''
- 	let years = Math.floor(value / year) 
+ 	let years = Math.floor(value / year)
   let days  = Math.floor((value % year) / 86400)
-  let hours = Math.floor((value % year) % 86400 / 3600) 
-  let minutes = Math.floor((value % year) % 86400 % 3600 / 60) 
+  let hours = Math.floor((value % year) % 86400 / 3600)
+  let minutes = Math.floor((value % year) % 86400 % 3600 / 60)
   let second = value - (Math.floor(value / 60) * 60)
   let template = `${years != 0 ? years + ' year' + sometimes(years) + '-' : ''}${days != 0 ? days + ' day' + sometimes(days) + '-' : ''}${hours != 0 ? hours + ' hour' + sometimes(hours) + '-' : ''}${minutes != 0 ? minutes + ' minute' + sometimes(minutes) + '-' : ''}${second != 0 ? second + ' second' + sometimes(second) : ''}`.trim().replace(/ {1,}/g," ").split('-').filter((el) => el != '')
-  
+
 template.length === 5 ? template.splice(1, 0, ',') && template.splice(3, 0, ',') && template.splice(5, 0, ',') && template.splice(7, 0, 'and') : template.length === 4 ? template.splice(1, 0, ',') && template.splice(3, 0, ',') && template.splice(5, 0, 'and') : template.length === 3 ? template.splice(1, 0, ',') && template.splice(3, 0, 'and') : template.length === 2 ? template.splice(1, 0, 'and') : ''
-  
+
   return template.join(' ').replace(/\s,/g, ',')
-  
+
  }
- 
+
  return result(seconds)
 }
 
 
-// console.groupCollapsed(' 18.')
+console.groupCollapsed(' 18.')
 console.log(formatDuration(1))
 console.log(formatDuration(61))
 console.log(formatDuration(121))
@@ -415,8 +415,46 @@ console.log(formatDuration(87780))
 console.log(formatDuration(10622))
 console.log(formatDuration(41535960))
 console.log(formatDuration(0))
-//console.groupEnd()
+console.groupEnd()
 
+
+// 19. Pete, the baker
+
+/*
+Pete likes to bake some cakes. He has some recipes and ingredients.
+Unfortunately he is not good in maths. Can you help him to find out, how many cakes he could bake considering his recipes?
+Write a function cakes(), which takes the recipe (object) and the available ingredients
+(also an object) and returns the maximum number of cakes Pete can bake (integer). For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present in the objects, can be considered as 0.
+*/
+
+function cakes(recipe, available) {
+ let recipeArr = Object.keys(recipe)
+ let availableArr = Object.keys(available)
+ let check = recipeArr.every((el, index) => availableArr.includes(el))
+ if(!check) return 0
+ let removeArr = availableArr.filter(el => recipeArr.includes(el))
+
+ let resultArr = []
+
+ for (let i = 0; i <= removeArr.length - 1; i++) {
+  resultArr.push(Math.floor(available[removeArr[i]] / recipe[removeArr[i]]))
+ }
+
+ return Math.min(...resultArr)
+}
+
+console.groupCollapsed('19')
+// must return 2
+console.log(cakes(
+ {flour: 500, sugar: 200, eggs: 1},
+ {flour: 1200, sugar: 1200, eggs: 5, ups: 70})
+)
+
+// must return 0
+console.log(cakes(
+ {apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100},
+ {sugar: 500, flour: 2000, milk: 2000}))
+console.groupEnd()
 
 
 
