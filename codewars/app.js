@@ -456,6 +456,31 @@ console.log(cakes(
  {sugar: 500, flour: 2000, milk: 2000}))
 console.groupEnd()
 
+// 20. Format a string of names like 'Bart, Lisa & Maggie'.
+
+function list(names){
+ if (names.length === 0) return ''
+ let arr = names.map((el, index, array) => Object.values(el).join())
+ let prepArr = arr.map((el, i, arr) => i !== arr.length - 1 && i !== arr.length - 2 ? el + ',' : el)
+ prepArr.length > 1 ? prepArr.splice(-1, 0, '&') : ''
+ return prepArr.join(' ')
+}
+
+console.groupCollapsed('20')
+console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Marge'}]))
+
+console.log(list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ]))
+// returns 'Bart, Lisa & Maggie'
+
+console.log(list([ {name: 'Bart'}, {name: 'Lisa'} ]))
+// returns 'Bart & Lisa'
+
+console.log(list([ {name: 'Bart'} ]))
+// returns 'Bart'
+
+console.log(list([]))
+// returns ''
+console.groupEnd()
 
 
 
