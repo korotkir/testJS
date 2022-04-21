@@ -25,17 +25,17 @@
 Lucas и Bill.
 */
 function killer(suspectInfo, dead) {
-   for (let i = 0; i < Object.keys(suspectInfo).length; i++) {
-       for (let suspect[i] of suspectInfo[i]) {
-           return suspectInfo[suspect]
-       }
-   }
+  for (let i = 0; i < Object.keys(suspectInfo).length; i++) {
+    for (let suspect[i] of suspectInfo[i]) {
+      return suspectInfo[suspect]
+    }
+  }
 }
 
 console.log(killer({
-    'James': ['Jacob', 'Bill', 'Lucas'],
-    'Johnny': ['David', 'Kyle', 'Lucas'],
-    'Peter': ['Lucy', 'Kyle']
+  'James': ['Jacob', 'Bill', 'Lucas'],
+  'Johnny': ['David', 'Kyle', 'Lucas'],
+  'Peter': ['Lucy', 'Kyle']
 }, ['Lucas', 'Bill'])); // 'James'
 
 // console.log(killer({
@@ -47,9 +47,9 @@ console.log(killer({
 
 // 2
 
-// Напишите программу, которая выводит  в консоль числа от 1 до 100. 
+// Напишите программу, которая выводит  в консоль числа от 1 до 100.
 // При этом, вместо чисел кратных 3, программа должна выводить слово "Flizz",
-// а вместо чисел кратных 5 - слово "Buzz". Если число кратно и 3 и 5, 
+// а вместо чисел кратных 5 - слово "Buzz". Если число кратно и 3 и 5,
 // программа должна выводить - "FlizzBuzz".
 
 
